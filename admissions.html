@@ -1,50 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta name="description" content="Agegnehu Global University (AGU) - A premier institution for AI, Blockchain, and Business studies.">
-    <meta name="keywords" content="University, AGU, Software Engineering, AI, Blockchain, Education">
-    <meta name="author" content="Agegnehu Shibiru">
-
     <meta charset="UTF-8">
     <title>Admissions | AGU</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav style="background: #2c3e50; padding: 1rem; text-align: center; margin-bottom: 20px;">
-        <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none;">Home</a>
-        <a href="admissions.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: bold;">Admissions</a>
-        <a href="courses.html" style="color: white; margin: 0 15px; text-decoration: none;">Courses</a>
-    </nav>
 
-    <main style="max-width: 800px; margin: auto; padding: 20px;">
-        <h1>Apply for Admission</h1>
-        <p>Start your journey with AGU. Fill out the form below to apply.</p>
-        <form>
-                <script>
-    document.querySelector('form').addEventListener('submit', function(e) {
-        const name = document.querySelector('input[type="text"]').value;
-        if (name.trim() === "") {
-            e.preventDefault();
-            alert("Please enter your full name.");
+<nav style="background: #2c3e50; padding: 1rem; text-align: center; margin-bottom: 20px;">
+    <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none;">Home</a>
+    <a href="admissions.html" style="color: white; margin: 0 15px; text-decoration: none; font-weight: bold;">Admissions</a>
+    <a href="courses.html" style="color: white; margin: 0 15px; text-decoration: none;">Courses</a>
+</nav>
+
+<main style="max-width: 800px; margin: auto; padding: 20px;">
+    <h1>Apply for Admission</h1>
+    <p>Start your journey with AGU. Fill out the form below to apply.</p>
+
+    <form id="admissionForm">
+        <label>Full Name:</label><br>
+        <input type="text" id="name" style="width: 100%; padding: 8px; margin-bottom: 10px;" required><br>
+        
+        <label>Desired Program:</label><br>
+        <select id="program" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+            <option>Computing & AI</option>
+            <option>Business & Finance</option>
+            <option>Engineering</option>
+        </select><br>
+        
+        <button type="submit" style="background: #3498db; color: white; padding: 10px 20px; border: none; cursor: pointer;">Submit</button>
+    </form>
+</main>
+
+<footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #ccc; color: #777;">
+    <p>&copy; 2026 Agegnehu Global University (AGU). All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    const supabaseUrl = 'https://bhzndblapjksxekacvtl.supabase.co';
+    const supabaseKey = 'YOUR_ANON_PUBLIC_KEY_HERE'; 
+    
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    document.getElementById('admissionForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const program = document.getElementById('program').value;
+
+        const { data, error } = await supabase
+            .from('admissions')
+            .insert([{ full_name: name, desired_program: program }]);
+
+        if (error) {
+            console.error('Error:', error);
+            alert('Registration failed: ' + error.message);
+        } else {
+            alert('Registered successfully! Data has been sent.');
+            document.getElementById('admissionForm').reset();
         }
     });
-                </script>
-                
-            <label>Full Name:</label><br>
-            <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
-            <label>Desired Program:</label><br>
-            <select style="width: 100%; padding: 8px; margin-bottom: 10px;">
-                <option>Computing & AI</option>
-                <option>Business & Finance</option>
-                <option>Engineering</option>
-            </select><br>
-            <button type="submit" style="background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Submit Application</button>
-        </form>
-    </main>
-    <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #ccc; color: #777;">
-    <p>&copy; 2026 Agegnehu Global University (AGU). All rights reserved.</p>
-    <p>Contact: agegnehushibiru@gmail.com | +251910195166</p>
-    </footer>
-    
+</script>
+
 </body>
 </html>
