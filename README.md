@@ -1,2 +1,16 @@
-# Agegnehu-global-university-
-AGU is a premier institution dedicated to academic excellence and innovation. We empower students through advanced digital learning and research. Our Programs: Computing &amp; AI: Full-stack development &amp; Blockchain. Business &amp; Finance: Entrepreneurship &amp; Digital economy. Engineering: Sustainable technology &amp; Infrastructure. 
+# Agegnehu Global University (AGU)
+
+Welcome to the official repository for AGU. 
+
+AGU is a premier institution dedicated to academic excellence and innovation. We empower students through advanced digital learning and research.
+
+## Programs
+- **Computing & AI**: Full-stack development & Blockchain.
+- **Business & Finance**: Entrepreneurship & Digital economy.
+- **Engineering**: Sustainable technology & Infrastructure.
+
+## Technologies Used
+- HTML5
+- CSS3
+
+*Join us to shape the future with knowledge.*
