@@ -20,6 +20,16 @@
         <h1>Apply for Admission</h1>
         <p>Start your journey with AGU. Fill out the form below to apply.</p>
         <form>
+                <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const name = document.querySelector('input[type="text"]').value;
+        if (name.trim() === "") {
+            e.preventDefault();
+            alert("Please enter your full name.");
+        }
+    });
+                </script>
+                
             <label>Full Name:</label><br>
             <input type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;"><br>
             <label>Desired Program:</label><br>
